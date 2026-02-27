@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "A full-stack pharmacy/health web app branded as 'JD Health Lab' (contact: 8886918989), cloning the aarthiscan.com design and functionality. Includes a user-facing panel (health packages, individual lab tests with 60% discount, cart, booking, order tracking, prescriptions) and an admin panel for managing tests, packages, and uploads. Mobile-first, premium professional design.",
+  "architectural_notes": [
+    "Full-stack app: React frontend + Node.js/Express backend with REST API",
+    "Mobile-first responsive design inspired by PharmEasy.in",
+    "Use Google image URLs for product/medicine images and icons",
+    "App is branded as 'JD Health Lab' with contact number 8886918989",
+    "Lab tests and health packages show 60% discount off market price",
+    "Admin panel required: manage lab tests, health packages, image uploads, and order/booking management"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Promotional hero banner for a diagnostic lab/health test booking site — clean white and green gradient background with illustrated lab test tubes, a stethoscope, and a bold text overlay area on the left side (hero-banner-lab.dim_1400x500.png)\n- Icon strip illustration: four small flat icons representing Home Collection (house with medical cross), Online Reports (document with checkmark), Certified Labs (badge/shield), and Affordable Prices (rupee coin) — all in green on white circular backgrounds (why-choose-us-icons.dim_400x100.png)\n- How It Works step illustration: three connected horizontal steps — calendar/booking icon, home collection vial icon, report/download icon — in green line-art style (how-it-works-steps.dim_800x200.png)",
+  "existing_features": [
+    {
+      "id": "feature-design-and-implement-a-premium-mobile-first-responsive-ui-with-a-clean-pharmacy-themed-visual-identity-white-and-green-color-palette-modern-sans-serif-typography-card-based-layouts-pill-capsule-shaped-buttons-bottom-navigation-style-tab-bar-on-small-screens-and-sticky-top-navigation-with-search-bar-on-desktop-apply-this-design-system-consistently-across-all-pages",
+      "title": "Design and implement a premium, mobile-first responsive UI with a clean pharmacy-themed visual identity: white and green color palette, modern sans-serif typography, card-based layouts, pill/capsule-shaped buttons, bottom-navigation-style tab bar on small screens, and sticky top navigation with search bar on desktop. Apply this design system consistently across all pages.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-home-page-with-a-hero-banner-carousel-showcasing-promotions-a-quick-access-category-grid-medicines-lab-tests-health-products-vitamins-personal-care-baby-care-featured-products-section-and-a-health-articles-preview-strip-use-product-category-images-from-publicly-accessible-google-image-urls",
+      "title": "Implement a Home page with a hero banner carousel showcasing promotions, a quick-access category grid (Medicines, Lab Tests, Health Products, Vitamins, Personal Care, Baby Care), featured products section, and a health articles preview strip. Use product/category images from publicly accessible Google image URLs.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-medicine-search-browse-page-with-a-search-bar-auto-suggest-dropdown-filter-sidebar-category-price-range-brand-requires-prescription-toggle-and-a-product-grid-with-sorting-options-price-low-high-popularity-discount-each-product-card-shows-image-from-url-name-price-with-discount-badge-rating-stars-and-add-to-cart-button",
+      "title": "Implement a Medicine Search & Browse page with a search bar (auto-suggest dropdown), filter sidebar (category, price range, brand, requires prescription toggle), and a product grid with sorting options (price low-high, popularity, discount). Each product card shows image from URL, name, price with discount badge, rating stars, and Add to Cart button.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-medicine-detail-page-showing-large-product-image-from-url-full-name-manufacturer-price-and-discount-detailed-description-key-benefits-list-dosage-information-customer-ratings-summary-add-to-cart-and-buy-now-buttons-and-a-related-products-carousel",
+      "title": "Create a Medicine Detail page showing large product image (from URL), full name, manufacturer, price and discount, detailed description, key benefits list, dosage information, customer ratings summary, Add to Cart and Buy Now buttons, and a related products carousel.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-cart-page-and-multi-step-checkout-flow-cart-page-lists-added-items-with-quantity-controls-and-remove-option-subtotal-discount-summary-and-proceed-to-checkout-button-checkout-flow-collects-delivery-address-and-shows-order-summary-with-place-order-confirmation",
+      "title": "Implement a Cart page and multi-step Checkout flow. Cart page lists added items with quantity controls and remove option, subtotal, discount summary, and Proceed to Checkout button. Checkout flow collects delivery address and shows order summary with Place Order confirmation.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-user-authentication-using-internet-identity-add-login-register-flow-with-a-profile-page-showing-name-email-saved-addresses-and-an-edit-profile-form-show-logged-in-state-in-the-header-with-user-avatar-initial-and-a-dropdown-with-profile-and-logout-options",
+      "title": "Implement User Authentication using Internet Identity. Add Login/Register flow with a profile page showing name, email, saved addresses, and an Edit Profile form. Show logged-in state in the header with user avatar initial and a dropdown with Profile and Logout options.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-order-history-tracking-page-accessible-from-the-user-profile-list-all-past-orders-with-order-id-date-status-badge-color-coded-item-thumbnails-and-total-amount-clicking-an-order-expands-or-navigates-to-an-order-detail-view-with-a-visual-status-progress-tracker-placed-processing-shipped-delivered",
+      "title": "Create an Order History & Tracking page accessible from the user profile. List all past orders with order ID, date, status badge (color-coded), item thumbnails, and total amount. Clicking an order expands or navigates to an Order Detail view with a visual status progress tracker (Placed → Processing → Shipped → Delivered).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-upload-prescription-feature-accessible-from-the-header-and-cart-allow-users-to-upload-a-prescription-image-file-attach-it-to-a-cart-order-and-flag-the-order-as-requiring-prescription-review-store-prescription-metadata-filename-uploadedat-status-pending-approved-in-the-backend",
+      "title": "Add an Upload Prescription feature accessible from the header and cart. Allow users to upload a prescription image file, attach it to a cart order, and flag the order as requiring prescription review. Store prescription metadata (filename, uploadedAt, status: Pending/Approved) in the backend.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-lab-tests-booking-section-with-a-list-of-available-lab-test-packages-name-description-price-sample-type-turnaround-time-imageurl-users-can-browse-search-tests-add-to-cart-and-book-with-a-selected-appointment-date-time-slot-backend-stores-labtest-items-and-bookings",
+      "title": "Build a Lab Tests Booking section with a list of available lab test packages (name, description, price, sample type, turnaround time, imageUrl). Users can browse, search tests, add to cart, and book with a selected appointment date/time slot. Backend stores LabTest items and Bookings.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-health-articles-blog-section-display-a-grid-of-article-cards-with-thumbnail-image-from-url-title-short-excerpt-author-date-and-read-more-link-clicking-an-article-opens-a-full-article-detail-page-with-the-full-text-image-header-and-related-articles-sidebar-seed-at-least-6-articles-in-the-backend",
+      "title": "Create a Health Articles / Blog section. Display a grid of article cards with thumbnail image (from URL), title, short excerpt, author, date, and Read More link. Clicking an article opens a full article detail page with the full text, image header, and related articles sidebar. Seed at least 6 articles in the backend.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-custom-app-logo-image-a-clean-green-pill-capsule-icon-with-the-text-pharmaease-beside-it-in-a-modern-sans-serif-font-suitable-for-use-in-the-header-and-as-a-favicon",
+      "title": "Generate a custom app logo image: a clean green pill/capsule icon with the text 'PharmaEase' beside it in a modern sans-serif font, suitable for use in the header and as a favicon.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-hero-banner-promotional-image-for-the-home-page-carousel-featuring-a-pharmacy-health-theme-with-medicines-green-accents-and-a-clean-promotional-overlay-area",
+      "title": "Generate a hero banner promotional image for the home page carousel featuring a pharmacy/health theme with medicines, green accents, and a clean promotional overlay area.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rebrand-the-entire-app-from-pharmaease-to-jd-health-lab-update-the-app-name-in-the-html-title-header-logo-text-footer-and-all-user-facing-strings-display-the-contact-number-8886918989-prominently-in-the-header-desktop-footer-and-a-dedicated-contact-section",
+      "title": "Rebrand the entire app from 'PharmaEase' to 'JD Health Lab'. Update the app name in the HTML title, header logo text, footer, and all user-facing strings. Display the contact number 8886918989 prominently in the header (desktop), footer, and a dedicated contact section.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-lab-tests-page-to-show-two-tabs-health-packages-and-individual-tests-under-health-packages-display-package-cards-showing-package-image-name-list-of-included-tests-key-test-parameters-market-price-struck-through-60-discounted-price-with-a-prominent-discount-badge-sample-type-turnaround-time-and-an-add-to-cart-button-under-individual-tests-show-test-cards-with-image-name-test-parameters-list-market-price-struck-through-60-discounted-price-and-add-to-cart-button-both-tabs-must-support-search-filter",
+      "title": "Update the Lab Tests page to show two tabs: 'Health Packages' and 'Individual Tests'. Under Health Packages, display package cards showing: package image, name, list of included tests, key test parameters, market price (struck-through), 60% discounted price with a prominent discount badge, sample type, turnaround time, and an Add to Cart button. Under Individual Tests, show test cards with: image, name, test parameters list, market price (struck-through), 60% discounted price, and Add to Cart button. Both tabs must support search/filter.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-health-packages-and-individual-lab-tests-can-be-added-to-the-cart-the-cartcontext-and-cart-page-must-support-lab-test-health-package-items-alongside-medicine-items-the-cart-line-item-should-show-name-type-badge-package-lab-test-discounted-price-quantity-controls-and-remove-button-the-order-summary-must-show-the-correct-subtotals-and-grand-total-including-lab-items",
+      "title": "Ensure Health Packages and Individual Lab Tests can be added to the cart. The CartContext and Cart page must support lab test / health package items alongside medicine items. The cart line item should show: name, type badge (Package / Lab Test), discounted price, quantity controls, and remove button. The order summary must show the correct subtotals and grand total including lab items.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-react-query-hooks-usehealthpackages-usehealthpackage-in-usequeries-ts-to-fetch-health-packages-from-the-backend-add-a-corresponding-useaddhealthpackagetocart-utility-that-calls-the-cartcontext-add-action-with-the-correct-item-shape",
+      "title": "Add React Query hooks (useHealthPackages, useHealthPackage) in useQueries.ts to fetch health packages from the backend. Add a corresponding useAddHealthPackageToCart utility that calls the CartContext add action with the correct item shape.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-fully-functional-admin-panel-accessible-via-a-protected-admin-route-restricted-to-authorized-principal-s-the-admin-panel-must-include-the-following-management-sections-1-lab-tests-list-all-individual-tests-add-new-test-name-description-price-marketprice-discountedprice-imageurl-sampletype-turnaround-testparameters-edit-existing-delete-2-health-packages-list-all-packages-add-new-package-name-description-includedtests-testparameters-marketprice-discountedprice-imageurl-sampletype-turnaround-ispopular-edit-existing-delete-3-orders-list-all-pharmacy-orders-with-status-ability-to-update-order-status-placed-processing-shipped-delivered-4-lab-bookings-list-all-lab-test-bookings-with-date-time-slot-status-user-info-5-prescriptions-list-all-uploaded-prescriptions-with-filename-uploadedat-current-status-pending-approved-ability-to-approve-or-reject-the-admin-panel-must-have-its-own-sidebar-navigation-and-header-showing-jd-health-lab-admin-with-the-contact-number-8886918989",
+      "title": "Build a fully functional Admin Panel accessible via a protected /admin route (restricted to authorized principal(s)). The admin panel must include the following management sections: (1) Lab Tests — list all individual tests, add new test (name, description, price, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, testParameters), edit existing, delete; (2) Health Packages — list all packages, add new package (name, description, includedTests, testParameters, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, isPopular), edit existing, delete; (3) Orders — list all pharmacy orders with status, ability to update order status (Placed/Processing/Shipped/Delivered); (4) Lab Bookings — list all lab test bookings with date/time slot, status, user info; (5) Prescriptions — list all uploaded prescriptions with filename, uploadedAt, current status (Pending/Approved), ability to approve or reject. The admin panel must have its own sidebar navigation and header showing 'JD Health Lab Admin' with the contact number 8886918989.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-image-upload-capability-in-the-admin-panel-for-lab-tests-and-health-packages-when-creating-or-editing-a-lab-test-or-health-package-the-admin-should-be-able-to-upload-an-image-file-the-uploaded-image-blob-should-be-stored-in-the-backend-using-the-existing-blob-storage-mixin-and-served-as-a-data-url-or-via-a-dedicated-query-and-the-imageurl-field-of-the-record-should-be-updated-to-reference-this-stored-image",
+      "title": "Add an image upload capability in the Admin Panel for lab tests and health packages. When creating or editing a lab test or health package, the admin should be able to upload an image file. The uploaded image blob should be stored in the backend (using the existing blob storage mixin) and served as a data URL or via a dedicated query, and the imageUrl field of the record should be updated to reference this stored image.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Medicine search and browsing with categories",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Medicine detail page with images, price, description",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Cart and checkout flow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "User authentication (login/register/profile)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Order history and tracking",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Upload prescription feature",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Health articles / blog section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Lab tests booking section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Premium professional UI with mobile-first responsive design",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Backend API with product, user, order management",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Build a backend data model and API for Products (medicines and health products) including fields: id, name, category, description, price, discountedPrice, imageUrl, manufacturer, requiresPrescription, stockCount, ratings. Seed at least 20 sample products across categories.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Build backend data models and API for Users and Orders. User model: id, principal, name, email, phone, addresses. Order model: id, userId, items, totalAmount, status (Placed/Processing/Shipped/Delivered), createdAt, deliveryAddress. Expose createOrder, getOrdersByUser, updateOrderStatus functions.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Health packages section with cart support - each package shows included tests, parameters, market price, and 60% discounted price",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Individual lab tests with test parameters listed, market price shown with 60% discount applied",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Display app contact number 8886918989 prominently (header, footer, contact section)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Extend the backend LabTest data model to include: testParameters (array of strings listing what is measured), marketPrice (original price), and discountedPrice (marketPrice × 0.40 for 60% discount). Update the seed data to populate at least 10 individual lab tests with realistic test parameters, market prices, and pre-computed 60% discounted prices.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Add a HealthPackage data model to the backend with fields: id, name, description, includedTests (array of test names), testParameters (flat array of all parameters covered), marketPrice, discountedPrice (60% off marketPrice), imageUrl, sampleType, turnaround time, and isPopular flag. Expose getHealthPackages, getHealthPackage, and seedHealthPackages functions. Seed at least 6 health packages (e.g., Full Body Checkup, Diabetes Panel, Thyroid Profile, Liver Function, Heart Health, Women's Wellness).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Admin panel with ability to add/edit/delete lab tests and health packages, upload test images, and manage bookings/orders",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Clone aarthiscan.com UI/UX design and layout for JD Health Lab — replicate the site structure, sections, and visual style",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Extend the backend to expose admin-only Motoko functions: addLabTest, updateLabTest, deleteLabTest, addHealthPackage, updateHealthPackage, deleteHealthPackage, getAllOrders, updateOrderStatus, getAllBookings, getAllPrescriptions, updatePrescriptionStatus. Guard these functions so only the canister controller/deployer principal can call them. Wire the existing frontend query hooks to use these new backend functions where applicable.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Redesign the user-facing frontend to closely mirror the aarthiscan.com visual layout and structure for JD Health Lab. This includes: a prominent top header with logo, contact number 8886918989, and navigation; a hero section with a large promotional banner and call-to-action; a 'Why Choose Us' or key highlights strip (Home Collection, Reports Online, Certified Labs, etc.); a Health Packages section with card-based grid showing package name, included tests count, market price struck-through, discounted price with percentage badge, and a Book Now / Add to Cart button; an Individual Tests section with similar card layout; a 'How It Works' section (Book Test → Sample Collection → Get Reports); a Testimonials / Trust badges section; and a footer with contact number 8886918989, address, and quick links. Maintain the existing green-and-white JD Health Lab color palette.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "PharmEasy Clone",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

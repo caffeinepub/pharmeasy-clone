@@ -1,0 +1,122 @@
+{
+  "kind": "build_request",
+  "title": "Admin Panel + aarthiscan.com-inspired UI Clone for JD Health Lab",
+  "projectName": "JD Health Lab",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-21",
+      "text": "Build a fully functional Admin Panel accessible via a protected /admin route (restricted to authorized principal(s)). The admin panel must include the following management sections: (1) Lab Tests — list all individual tests, add new test (name, description, price, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, testParameters), edit existing, delete; (2) Health Packages — list all packages, add new package (name, description, includedTests, testParameters, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, isPopular), edit existing, delete; (3) Orders — list all pharmacy orders with status, ability to update order status (Placed/Processing/Shipped/Delivered); (4) Lab Bookings — list all lab test bookings with date/time slot, status, user info; (5) Prescriptions — list all uploaded prescriptions with filename, uploadedAt, current status (Pending/Approved), ability to approve or reject. The admin panel must have its own sidebar navigation and header showing 'JD Health Lab Admin' with the contact number 8886918989.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Admin panel how to add tests and upload",
+          "I want this clone for my JD health lab 8886918989 user panel and admin panel"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to /admin shows the admin panel UI (unauthorized users see an access-denied message).",
+        "Admin can add a new individual lab test with all required fields and it appears in the lab tests list immediately.",
+        "Admin can edit and delete existing lab tests and health packages.",
+        "Admin can add a new health package with all required fields and it appears in the health packages list.",
+        "Admin can view all orders and change their status.",
+        "Admin can view all lab bookings.",
+        "Admin can view all uploaded prescriptions and approve or reject them.",
+        "Admin sidebar navigation links to each management section.",
+        "Header in admin panel shows 'JD Health Lab Admin' and phone 8886918989."
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Extend the backend to expose admin-only Motoko functions: addLabTest, updateLabTest, deleteLabTest, addHealthPackage, updateHealthPackage, deleteHealthPackage, getAllOrders, updateOrderStatus, getAllBookings, getAllPrescriptions, updatePrescriptionStatus. Guard these functions so only the canister controller/deployer principal can call them. Wire the existing frontend query hooks to use these new backend functions where applicable.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "admin panel"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Calling addLabTest with valid data creates a new LabTest record and it is returned by getLabTests.",
+        "Calling updateLabTest modifies the specified record; calling deleteLabTest removes it.",
+        "Calling addHealthPackage and updateHealthPackage work analogously.",
+        "getAllOrders returns all orders regardless of user.",
+        "updateOrderStatus changes the status of a specified order.",
+        "getAllBookings returns all lab test bookings.",
+        "getAllPrescriptions returns all prescription metadata.",
+        "updatePrescriptionStatus updates a prescription's status to Approved or Rejected.",
+        "Unauthorized calls to these functions are rejected with an error."
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Redesign the user-facing frontend to closely mirror the aarthiscan.com visual layout and structure for JD Health Lab. This includes: a prominent top header with logo, contact number 8886918989, and navigation; a hero section with a large promotional banner and call-to-action; a 'Why Choose Us' or key highlights strip (Home Collection, Reports Online, Certified Labs, etc.); a Health Packages section with card-based grid showing package name, included tests count, market price struck-through, discounted price with percentage badge, and a Book Now / Add to Cart button; an Individual Tests section with similar card layout; a 'How It Works' section (Book Test → Sample Collection → Get Reports); a Testimonials / Trust badges section; and a footer with contact number 8886918989, address, and quick links. Maintain the existing green-and-white JD Health Lab color palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "https://aarthiscan.com/",
+          "I want this clone for my JD health lab"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The homepage prominently displays 8886918989 in the header and footer.",
+        "A hero/banner section is visible at the top with a call-to-action button.",
+        "A 'Why Choose Us' / highlights strip is present below the hero.",
+        "Health Packages are displayed in a card grid with market price struck-through, discount badge, and Add to Cart / Book Now button.",
+        "Individual Lab Tests are shown in a similar card grid.",
+        "A 'How It Works' section with at least 3 steps is visible.",
+        "Footer contains contact number 8886918989, quick nav links, and branding.",
+        "All pages retain the green-and-white design system.",
+        "Layout is mobile-first and responsive across all breakpoints."
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Add an image upload capability in the Admin Panel for lab tests and health packages. When creating or editing a lab test or health package, the admin should be able to upload an image file. The uploaded image blob should be stored in the backend (using the existing blob storage mixin) and served as a data URL or via a dedicated query, and the imageUrl field of the record should be updated to reference this stored image.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-6"
+        ],
+        "quotes": [
+          "Admin panel how to add tests and upload"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Add/Edit Lab Test form in the admin panel includes a file input for uploading an image.",
+        "The Add/Edit Health Package form similarly includes an image upload field.",
+        "After upload, the image is stored in the backend and the test/package record's imageUrl reflects the stored image.",
+        "The lab test/health package card on the user-facing site displays the uploaded image."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "Admin route protection must use the canister controller principal — do not introduce external auth services.",
+    "All backend logic must remain in the single main actor (backend/main.mo).",
+    "Preserve existing green-and-white JD Health Lab design system tokens."
+  ],
+  "nonGoals": [
+    "Rebuilding existing user-facing features from scratch (cart, checkout, order history, prescriptions, articles) — only restyle to match aarthiscan.com layout.",
+    "Integrating external payment gateways or SMS/email notifications.",
+    "Multi-canister or microservices backend architecture.",
+    "Social login or third-party OAuth (only Internet Identity)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Promotional hero banner for a diagnostic lab/health test booking site — clean white and green gradient background with illustrated lab test tubes, a stethoscope, and a bold text overlay area on the left side (hero-banner-lab.dim_1400x500.png)",
+      "Icon strip illustration: four small flat icons representing Home Collection (house with medical cross), Online Reports (document with checkmark), Certified Labs (badge/shield), and Affordable Prices (rupee coin) — all in green on white circular backgrounds (why-choose-us-icons.dim_400x100.png)",
+      "How It Works step illustration: three connected horizontal steps — calendar/booking icon, home collection vial icon, report/download icon — in green line-art style (how-it-works-steps.dim_800x200.png)"
+    ],
+    "edits": []
+  }
+}

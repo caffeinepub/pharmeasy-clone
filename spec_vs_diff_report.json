@@ -1,0 +1,109 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T07:52:10.061Z",
+  "summary": "The diff implements a substantial portion of all four requirements. REQ-21 (Admin Panel) is largely complete with all five management sections, sidebar navigation, and proper access control. REQ-22 (backend admin functions) shows Motoko backend modifications with admin-guarded functions. REQ-23 (aarthiscan.com-inspired UI redesign) shows only a modified App.tsx routing — no evidence of a redesigned Home page, hero banner, Why Choose Us strip, How It Works section, testimonials, or updated footer. REQ-24 (image upload in admin) is implemented via ImageUploadField component. Several REQ-23 acceptance criteria are not evidenced in the diff.",
+  "missing_requirements": [
+    {
+      "id": "REQ-23",
+      "requirement": "Hero section with a large promotional banner and call-to-action button",
+      "reason": "No modified or added Home page component is present in the diff. The App.tsx routing change imports the existing Home component without showing any redesign of the hero/banner section.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Why Choose Us / key highlights strip (Home Collection, Reports Online, Certified Labs, Affordable Prices) below the hero",
+      "reason": "No new Home page, hero, or highlights strip component appears in the diff. The existing Home page is unchanged in the diff.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Health Packages card grid with market price struck-through, discount badge, and Add to Cart / Book Now button on user-facing site",
+      "reason": "No updated user-facing LabTests or Health Packages page is present in the diff. Only admin management pages exist.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Individual Lab Tests shown in a similar card grid with market price struck-through and discount badge on user-facing site",
+      "reason": "No updated user-facing LabTests page card layout is present in the diff.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "How It Works section with at least 3 steps (Book Test → Sample Collection → Get Reports)",
+      "reason": "No How It Works section component or page modification is visible in the diff.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Testimonials / Trust badges section",
+      "reason": "No testimonials or trust badges section is present in any added or modified file.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Footer with contact number 8886918989, address, and quick links; header prominently displaying 8886918989",
+      "reason": "No updated Layout, Header, or Footer component is in the diff. The existing Layout component is not modified.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Prominent top header with logo, contact number 8886918989, and navigation mirroring aarthiscan.com layout",
+      "reason": "The main Layout/Header component files are not present in the diff as modified files.",
+      "evidence": []
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Prescription image preview dialog in admin panel that fetches image bytes and creates an object URL for display",
+      "reason": "REQ-21 only requires listing prescriptions with filename, uploadedAt, status and ability to approve/reject. An interactive image preview viewer was not requested.",
+      "evidence": [
+        "frontend/src/pages/admin/PrescriptionsManagement.tsx"
+      ]
+    },
+    {
+      "description": "Expandable order row showing order items detail in the Orders management table",
+      "reason": "REQ-21 requires listing orders and updating status; the collapsible items expansion was not specified in requirements.",
+      "evidence": [
+        "frontend/src/pages/admin/OrdersManagement.tsx"
+      ]
+    },
+    {
+      "description": "Manual URL input fallback in the ImageUploadField component alongside file upload",
+      "reason": "REQ-24 only specifies file upload capability for images to be stored in backend. A URL text input fallback was not requested.",
+      "evidence": [
+        "frontend/src/components/admin/ImageUploadField.tsx"
+      ]
+    },
+    {
+      "description": "Migration module added as a separate file backend/migration.mo",
+      "reason": "No migration module was specified in the requirements. All backend logic must remain in the single main actor per constraints.",
+      "evidence": [
+        "backend/migration.mo"
+      ]
+    }
+  ],
+  "confidence": 0.78,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend/src/App.tsx",
+    "frontend/src/components/admin/HealthPackageForm.tsx",
+    "frontend/src/components/admin/ImageUploadField.tsx",
+    "frontend/src/components/admin/LabTestForm.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/admin/AdminLayout.tsx",
+    "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+    "frontend/src/pages/admin/LabBookingsManagement.tsx",
+    "frontend/src/pages/admin/LabTestsManagement.tsx",
+    "frontend/src/pages/admin/OrdersManagement.tsx",
+    "frontend/src/pages/admin/PrescriptionsManagement.tsx",
+    "project_state.json"
+  ]
+}

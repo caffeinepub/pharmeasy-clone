@@ -1,0 +1,113 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T07:52:10.065Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-21",
+        "summary": "Build a fully functional Admin Panel accessible via a protected /admin route (restricted to authorized principal(s)). The admin panel must include the following management sections: (1) Lab Tests — list all individual tests, add new test (name, description, price, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, testParameters), edit existing, delete; (2) Health Packages — list all packages, add new package (name, description, includedTests, testParameters, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, isPopular), edit existing, delete; (3) Orders — list all pharmacy orders with status, ability to update order status (Placed/Processing/Shipped/Delivered); (4) Lab Bookings — list all lab test bookings with date/time slot, status, user info; (5) Prescriptions — list all uploaded prescriptions with filename, uploadedAt, current status (Pending/Approved), ability to approve or reject. The admin panel must have its own sidebar navigation and header showing 'JD Health Lab Admin' with the contact number 8886918989.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/admin/AdminLayout.tsx",
+          "frontend/src/pages/admin/LabTestsManagement.tsx",
+          "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+          "frontend/src/pages/admin/OrdersManagement.tsx",
+          "frontend/src/pages/admin/LabBookingsManagement.tsx",
+          "frontend/src/pages/admin/PrescriptionsManagement.tsx",
+          "frontend/src/components/admin/LabTestForm.tsx",
+          "frontend/src/components/admin/HealthPackageForm.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/admin/AdminLayout.tsx",
+          "frontend/src/pages/admin/LabTestsManagement.tsx",
+          "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+          "frontend/src/pages/admin/OrdersManagement.tsx",
+          "frontend/src/pages/admin/LabBookingsManagement.tsx",
+          "frontend/src/pages/admin/PrescriptionsManagement.tsx",
+          "frontend/src/components/admin/LabTestForm.tsx",
+          "frontend/src/components/admin/HealthPackageForm.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-22",
+        "summary": "Extend the backend to expose admin-only Motoko functions: addLabTest, updateLabTest, deleteLabTest, addHealthPackage, updateHealthPackage, deleteHealthPackage, getAllOrders, updateOrderStatus, getAllBookings, getAllPrescriptions, updatePrescriptionStatus. Guard these functions so only the canister controller/deployer principal can call them. Wire the existing frontend query hooks to use these new backend functions where applicable.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-23",
+        "summary": "Redesign the user-facing frontend to closely mirror the aarthiscan.com visual layout and structure for JD Health Lab. This includes: a prominent top header with logo, contact number 8886918989, and navigation; a hero section with a large promotional banner and call-to-action; a 'Why Choose Us' or key highlights strip (Home Collection, Reports Online, Certified Labs, etc.); a Health Packages section with card-based grid showing package name, included tests count, market price struck-through, discounted price with percentage badge, and a Book Now / Add to Cart button; an Individual Tests section with similar card layout; a 'How It Works' section (Book Test → Sample Collection → Get Reports); a Testimonials / Trust badges section; and a footer with contact number 8886918989, address, and quick links. Maintain the existing green-and-white JD Health Lab color palette.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/components/HealthPackageCard.tsx",
+          "frontend/src/components/LabTestCard.tsx",
+          "frontend/src/pages/LabTests.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-24",
+        "summary": "Add an image upload capability in the Admin Panel for lab tests and health packages. When creating or editing a lab test or health package, the admin should be able to upload an image file. The uploaded image blob should be stored in the backend (using the existing blob storage mixin) and served as a data URL or via a dedicated query, and the imageUrl field of the record should be updated to reference this stored image.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/admin/LabTestForm.tsx",
+          "frontend/src/components/admin/HealthPackageForm.tsx",
+          "frontend/src/components/admin/ImageUploadField.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/admin/LabTestForm.tsx",
+          "frontend/src/components/admin/HealthPackageForm.tsx",
+          "frontend/src/components/admin/ImageUploadField.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/hero-banner-lab.dim_1400x500.png",
+    "frontend/public/assets/generated/how-it-works-steps.dim_800x200.png",
+    "frontend/public/assets/generated/why-choose-us-icons.dim_400x100.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/admin/HealthPackageForm.tsx",
+    "frontend/src/components/admin/ImageUploadField.tsx",
+    "frontend/src/components/admin/LabTestForm.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/admin/AdminLayout.tsx",
+    "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+    "frontend/src/pages/admin/LabBookingsManagement.tsx",
+    "frontend/src/pages/admin/LabTestsManagement.tsx",
+    "frontend/src/pages/admin/OrdersManagement.tsx",
+    "frontend/src/pages/admin/PrescriptionsManagement.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

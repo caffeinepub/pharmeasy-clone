@@ -1,0 +1,57 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-fully-functional-admin-panel-accessible-via-a-protected-admin-route-restricted-to-authorized-principal-s-the-admin-panel-must-include-the-following-management-sections-1-lab-tests-list-all-individual-tests-add-new-test-name-description-price-marketprice-discountedprice-imageurl-sampletype-turnaround-testparameters-edit-existing-delete-2-health-packages-list-all-packages-add-new-package-name-description-includedtests-testparameters-marketprice-discountedprice-imageurl-sampletype-turnaround-ispopular-edit-existing-delete-3-orders-list-all-pharmacy-orders-with-status-ability-to-update-order-status-placed-processing-shipped-delivered-4-lab-bookings-list-all-lab-test-bookings-with-date-time-slot-status-user-info-5-prescriptions-list-all-uploaded-prescriptions-with-filename-uploadedat-current-status-pending-approved-ability-to-approve-or-reject-the-admin-panel-must-have-its-own-sidebar-navigation-and-header-showing-jd-health-lab-admin-with-the-contact-number-8886918989",
+      "featureTitle": "Build a fully functional Admin Panel accessible via a protected /admin route (restricted to authorized principal(s)). The admin panel must include the following management sections: (1) Lab Tests — list all individual tests, add new test (name, description, price, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, testParameters), edit existing, delete; (2) Health Packages — list all packages, add new package (name, description, includedTests, testParameters, marketPrice, discountedPrice, imageUrl, sampleType, turnaround, isPopular), edit existing, delete; (3) Orders — list all pharmacy orders with status, ability to update order status (Placed/Processing/Shipped/Delivered); (4) Lab Bookings — list all lab test bookings with date/time slot, status, user info; (5) Prescriptions — list all uploaded prescriptions with filename, uploadedAt, current status (Pending/Approved), ability to approve or reject. The admin panel must have its own sidebar navigation and header showing 'JD Health Lab Admin' with the contact number 8886918989.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/admin/HealthPackageForm.tsx",
+        "frontend/src/components/admin/LabTestForm.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/admin/AdminLayout.tsx",
+        "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+        "frontend/src/pages/admin/LabBookingsManagement.tsx",
+        "frontend/src/pages/admin/LabTestsManagement.tsx",
+        "frontend/src/pages/admin/OrdersManagement.tsx",
+        "frontend/src/pages/admin/PrescriptionsManagement.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-image-upload-capability-in-the-admin-panel-for-lab-tests-and-health-packages-when-creating-or-editing-a-lab-test-or-health-package-the-admin-should-be-able-to-upload-an-image-file-the-uploaded-image-blob-should-be-stored-in-the-backend-using-the-existing-blob-storage-mixin-and-served-as-a-data-url-or-via-a-dedicated-query-and-the-imageurl-field-of-the-record-should-be-updated-to-reference-this-stored-image",
+      "featureTitle": "Add an image upload capability in the Admin Panel for lab tests and health packages. When creating or editing a lab test or health package, the admin should be able to upload an image file. The uploaded image blob should be stored in the backend (using the existing blob storage mixin) and served as a data URL or via a dedicated query, and the imageUrl field of the record should be updated to reference this stored image.",
+      "files": [
+        "frontend/src/components/admin/HealthPackageForm.tsx",
+        "frontend/src/components/admin/ImageUploadField.tsx",
+        "frontend/src/components/admin/LabTestForm.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

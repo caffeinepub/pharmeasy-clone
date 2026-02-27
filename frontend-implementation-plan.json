@@ -1,0 +1,153 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Admin Panel + aarthiscan.com-inspired UI Clone for JD Health Lab",
+  "requirements": [
+    {
+      "id": "REQ-21",
+      "summary": "Build a fully functional Admin Panel accessible via a protected /admin route with management sections for lab tests, health packages, orders, lab bookings, and prescriptions",
+      "acceptanceCriteria": [
+        "Navigating to /admin shows the admin panel UI (unauthorized users see an access-denied message).",
+        "Admin can add a new individual lab test with all required fields and it appears in the lab tests list immediately.",
+        "Admin can edit and delete existing lab tests and health packages.",
+        "Admin can add a new health package with all required fields and it appears in the health packages list.",
+        "Admin can view all orders and change their status.",
+        "Admin can view all lab bookings.",
+        "Admin can view all uploaded prescriptions and approve or reject them.",
+        "Admin sidebar navigation links to each management section.",
+        "Header in admin panel shows 'JD Health Lab Admin' and phone 8886918989."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/admin/AdminLayout.tsx",
+          "operation": "create",
+          "description": "Create an admin-specific layout component with a sidebar navigation (Lab Tests, Health Packages, Orders, Lab Bookings, Prescriptions sections) and a header displaying 'JD Health Lab Admin' with contact number 8886918989. Use the authorization component to verify admin role using isCallerAdmin() from the backend interface. Show an access-denied message for unauthorized users. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/LabTestsManagement.tsx",
+          "operation": "create",
+          "description": "Create the Lab Tests management page with a table/list displaying all lab tests (name, description, price, marketPrice, discountedPrice, sampleType, turnaround). Include Add New Test button that opens a form modal. Provide Edit and Delete action buttons for each test row. Use useQuery to fetch getAllLabTests and useMutation hooks for addLabTest, updateLabTest, deleteLabTest backend functions."
+        },
+        {
+          "path": "frontend/src/pages/admin/HealthPackagesManagement.tsx",
+          "operation": "create",
+          "description": "Create the Health Packages management page with a table/list displaying all health packages (name, description, includedTests count, testParameters, marketPrice, discountedPrice, isPopular). Include Add New Package button that opens a form modal. Provide Edit and Delete action buttons for each package row. Use useQuery to fetch getHealthPackages and useMutation hooks for addHealthPackage, updateHealthPackage, deleteHealthPackage backend functions."
+        },
+        {
+          "path": "frontend/src/pages/admin/OrdersManagement.tsx",
+          "operation": "create",
+          "description": "Create the Orders management page displaying all pharmacy orders using getAllOrders backend function. Show order ID, user info, total amount, status, and created date. Provide a status dropdown/select for each order to update status (Placed/Processing/Shipped/Delivered) using updateOrderStatus backend function. Include expandable row details showing order items."
+        },
+        {
+          "path": "frontend/src/pages/admin/LabBookingsManagement.tsx",
+          "operation": "create",
+          "description": "Create the Lab Bookings management page displaying all lab test bookings using getAllBookings backend function. Show booking ID, user info, lab test name, appointment date/time, status, and created date in a table/list format. Make it read-only for viewing purposes."
+        },
+        {
+          "path": "frontend/src/pages/admin/PrescriptionsManagement.tsx",
+          "operation": "create",
+          "description": "Create the Prescriptions management page displaying all uploaded prescriptions using getAllPrescriptions backend function. Show prescription ID, order ID, user info, uploaded date, current status (Pending/Approved/Rejected), and a thumbnail/preview of the prescription image. Provide Approve and Reject action buttons for pending prescriptions using updatePrescriptionStatus backend function."
+        },
+        {
+          "path": "frontend/src/components/admin/LabTestForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable form component for adding/editing lab tests. Include fields: name (text), description (textarea), price (number), marketPrice (number), discountedPrice (number), imageUrl (text input for now, will be enhanced in REQ-24), sampleType (text), turnaround (text), testParameters (dynamic list input). Provide validation and submit handlers accepting onSubmit callback. Display in a modal dialog using shadcn/ui Dialog component."
+        },
+        {
+          "path": "frontend/src/components/admin/HealthPackageForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable form component for adding/editing health packages. Include fields: name (text), description (textarea), includedTests (dynamic multi-select or comma-separated input), testParameters (dynamic list input), marketPrice (number), discountedPrice (number), imageUrl (text input for now, will be enhanced in REQ-24), sampleType (text), turnaround (text), isPopular (checkbox). Provide validation and submit handlers accepting onSubmit callback. Display in a modal dialog using shadcn/ui Dialog component."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add new React Query hooks for admin operations: useAddLabTest, useUpdateLabTest, useDeleteLabTest, useAddHealthPackage, useUpdateHealthPackage, useDeleteHealthPackage, useGetAllOrders, useUpdateOrderStatus, useGetAllBookings, useGetAllPrescriptions, useUpdatePrescriptionStatus. Each mutation hook should invalidate relevant query caches on success."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add new routes for the admin panel: /admin (redirects to /admin/lab-tests), /admin/lab-tests, /admin/health-packages, /admin/orders, /admin/lab-bookings, /admin/prescriptions. Wrap admin routes with AdminLayout component. Ensure the admin routes are nested under a common admin path for consistent layout application."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Redesign the user-facing frontend to closely mirror the aarthiscan.com visual layout and structure for JD Health Lab",
+      "acceptanceCriteria": [
+        "The homepage prominently displays 8886918989 in the header and footer.",
+        "A hero/banner section is visible at the top with a call-to-action button.",
+        "A 'Why Choose Us' / highlights strip is present below the hero.",
+        "Health Packages are displayed in a card grid with market price struck-through, discount badge, and Add to Cart / Book Now button.",
+        "Individual Lab Tests are shown in a similar card grid.",
+        "A 'How It Works' section with at least 3 steps is visible.",
+        "Footer contains contact number 8886918989, quick nav links, and branding.",
+        "All pages retain the green-and-white design system.",
+        "Layout is mobile-first and responsive across all breakpoints."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Update the header to prominently display contact number 8886918989 next to the logo. Update the footer to include contact number 8886918989, JD Health Lab branding, quick navigation links (Home, Lab Tests, Medicines, Articles, About, Contact), and any trust badges. Ensure mobile-first responsive design with the existing green-and-white color palette."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Redesign the homepage to include: (1) A hero section using the generated image frontend/public/assets/generated/hero-banner-lab.dim_1400x500.png with a large promotional banner and call-to-action button; (2) A 'Why Choose Us' highlights strip using the generated image frontend/public/assets/generated/why-choose-us-icons.dim_400x100.png showing four key benefits (Home Collection, Reports Online, Certified Labs, Affordable Prices); (3) A Health Packages section with card-based grid showing package cards with discount badges and 'Book Now' buttons; (4) An Individual Tests section with similar card layout; (5) A 'How It Works' section using the generated image frontend/public/assets/generated/how-it-works-steps.dim_800x200.png with three steps (Book Test → Sample Collection → Get Reports); (6) A Testimonials or trust badges section. Reference the exact generated filenames with full workspace paths. Remove or consolidate any redundant homepage sections. Maintain the existing green-and-white JD Health Lab design system."
+        },
+        {
+          "path": "frontend/src/components/HealthPackageCard.tsx",
+          "operation": "modify",
+          "description": "Update the card UI to prominently show: package image, included tests count badge, discount percentage badge, market price struck-through, discounted price in large bold text, test parameters list, and a dual-action button (Add to Cart / Book Now). Ensure the card design matches the aarthiscan.com aesthetic with the JD Health Lab color palette."
+        },
+        {
+          "path": "frontend/src/components/LabTestCard.tsx",
+          "operation": "modify",
+          "description": "Update the card UI to prominently show: test image, discount percentage badge, market price struck-through, discounted price in large bold text, test parameters list, sample type, turnaround time, and dual-action buttons (Add to Cart / Book Now). Ensure the card design matches the aarthiscan.com aesthetic with the JD Health Lab color palette."
+        },
+        {
+          "path": "frontend/src/pages/LabTests.tsx",
+          "operation": "modify",
+          "description": "Redesign the lab tests page with a hero banner section at the top, followed by a tabbed or sectioned layout separating Health Packages and Individual Tests. Use card grids for both sections. Add filtering/sorting options and a prominent search bar. Ensure the design aligns with the aarthiscan.com layout using the JD Health Lab green-and-white palette."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Verify and refine global CSS custom properties for the JD Health Lab green-and-white design system. Ensure consistency with the aarthiscan.com-inspired layout. Add any additional utility classes needed for the new sections (hero banners, highlights strip, how-it-works steps, testimonials). Do not create new global stylesheet paths."
+        }
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "summary": "Add image upload capability in the Admin Panel for lab tests and health packages",
+      "acceptanceCriteria": [
+        "The Add/Edit Lab Test form in the admin panel includes a file input for uploading an image.",
+        "The Add/Edit Health Package form similarly includes an image upload field.",
+        "After upload, the image is stored in the backend and the test/package record's imageUrl reflects the stored image.",
+        "The lab test/health package card on the user-facing site displays the uploaded image."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/admin/LabTestForm.tsx",
+          "operation": "modify",
+          "description": "Add a file input field to the lab test form for uploading an image. When a file is selected, convert it to ExternalBlob using ExternalBlob.fromBytes() and upload it via the uploadImage backend function. Display upload progress using withUploadProgress(). Once uploaded, store the returned ExternalBlob reference and use getDirectURL() to populate the imageUrl field. Use the blob-storage component to handle file operations. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/admin/HealthPackageForm.tsx",
+          "operation": "modify",
+          "description": "Add a file input field to the health package form for uploading an image. When a file is selected, convert it to ExternalBlob using ExternalBlob.fromBytes() and upload it via the uploadImage backend function. Display upload progress using withUploadProgress(). Once uploaded, store the returned ExternalBlob reference and use getDirectURL() to populate the imageUrl field. Use the blob-storage component to handle file operations. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/admin/ImageUploadField.tsx",
+          "operation": "create",
+          "description": "Create a reusable image upload component that handles file selection, preview, upload progress display, and ExternalBlob conversion. Accept props for current imageUrl, onChange callback, and optional upload progress handler. Use the blob-storage component's ExternalBlob.fromBytes() and withUploadProgress() methods. Display a thumbnail preview of the selected/uploaded image. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a new mutation hook useUploadImage that calls the uploadImage backend function and returns the ExternalBlob reference. This hook will be used by the admin forms to upload images before saving test/package records."
+        }
+      ]
+    }
+  ]
+}

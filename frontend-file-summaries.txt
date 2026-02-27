@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main app with TanStack Router setup; the `/medicines` route `validateSearch` now returns both `q` and `category` as strings (defaulting to empty string), making them always present and satisfying the router's type requirements.",
+  "frontend/src/pages/Checkout.tsx": "Multi-step checkout updated to handle all cart item types with type badges in order summary, correct price calculations, and prescription upload only for medicine Rx items.",
+  "frontend/src/pages/Profile.tsx": "User profile page with view/edit mode, quick actions, and logout. Navigation to `/medicines` now includes required search params.",
+  "frontend/src/pages/OrderHistory.tsx": "Tabbed order history and lab test bookings page with expandable order cards and status stepper. Navigation to `/medicines` now includes required search params.",
+  "frontend/src/pages/LabTests.tsx": "Tabbed lab tests page with Health Packages and Individual Tests tabs, hero banner, search filtering across both tabs, and booking modal integration.",
+  "frontend/src/pages/Articles.tsx": "Health articles grid page with search, featured article hero (using `grid` without conflicting `block`), and responsive card grid. Fixed conflicting `grid block` classnames and `flex-shrink-0` → `shrink-0`.",
+  "frontend/src/pages/ArticleDetail.tsx": "Article detail page with hero image, full content, author/date metadata, and related articles sidebar. Fixed conflicting `flex block` classnames and `flex-shrink-0` → `shrink-0`.",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks including new useHealthPackages and useHealthPackage hooks for fetching health packages from the backend.",
+  "frontend/src/components/Layout.tsx": "Rebranded to JD Health Lab with logo, contact number 8886918989 in desktop header and footer, updated nav links, and caffeine.ai attribution.",
+  "frontend/src/pages/Cart.tsx": "Shopping cart page updated to display type badges (Medicine/Lab Test/Package) for all item types, with quantity controls, remove, and order summary.",
+  "frontend/src/pages/Home.tsx": "Home page rebranded to JD Health Lab with updated hero carousel including lab tests slide, 60% OFF offer banner, and all PharmaEase references removed.",
+  "frontend/src/pages/MedicineSearch.tsx": "Medicine search and browse page with debounced search, filter sidebar, sort controls, and product grid. Fixed `flex-shrink-0` → `shrink-0`.",
+  "frontend/src/pages/MedicineDetail.tsx": "Product detail page with image, pricing, quantity selector, Add to Cart / Buy Now buttons, and related products; updated to use `addProductToCart` from the refactored CartContext.",
+  "frontend/src/index.css": "Global styles defining the OKLCH pharmacy color system, custom CSS variables for light/dark modes, and component utility classes. Fixed the `.pharma-card` rule by replacing the unsupported `border-border/50` opacity modifier with plain `border-border` in the `@apply` directive.",
+  "frontend/index.html": "HTML entry point with updated page title \"JD Health Lab - Your Health, Delivered\".",
+  "frontend/src/context/CartContext.tsx": "Extended CartContext supporting three item types (product, labTest, healthPackage) with separate add actions, quantity controls, discount calculations, and hasRxItems flag.",
+  "frontend/src/components/HealthPackageCard.tsx": "Reusable card component for health packages showing included tests, key parameters, market price struck-through, discounted price with % OFF badge, and Add to Cart button.",
+  "frontend/src/components/LabTestCard.tsx": "Reusable card component for individual lab tests showing test parameters, market price struck-through, discounted price with % OFF badge, Add to Cart, and optional Book Appointment button.",
+  "frontend/src/components/LabTestBookingModal.tsx": "Lab test booking modal with date picker and time slot selection; fixed `labTest.price` → `labTest.discountedPrice` to match the updated LabTest backend type.",
+  "frontend/src/components/ProductCard.tsx": "Reusable product card with image, rating, pricing, and Add to Cart button; updated to use `addProductToCart` from the refactored CartContext."
+}

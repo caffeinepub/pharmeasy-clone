@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Pharmacy Green Palette */
+    --background: 0.98 0.005 150;
+    --foreground: 0.18 0.02 160;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 160;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 160;
+    --primary: 0.52 0.17 155;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.94 0.04 155;
+    --secondary-foreground: 0.35 0.12 155;
+    --muted: 0.95 0.01 150;
+    --muted-foreground: 0.52 0.03 155;
+    --accent: 0.92 0.06 155;
+    --accent-foreground: 0.35 0.12 155;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 1 0 0;
+    --border: 0.9 0.02 155;
+    --input: 0.9 0.02 155;
+    --ring: 0.52 0.17 155;
+
+    /* Chart colors */
+    --chart-1: 0.52 0.17 155;
+    --chart-2: 0.65 0.15 200;
+    --chart-3: 0.75 0.18 80;
+    --chart-4: 0.6 0.2 30;
+    --chart-5: 0.55 0.22 300;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.01 155;
+    --sidebar-foreground: 0.18 0.02 160;
+    --sidebar-primary: 0.52 0.17 155;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.92 0.06 155;
+    --sidebar-accent-foreground: 0.35 0.12 155;
+    --sidebar-border: 0.9 0.02 155;
+    --sidebar-ring: 0.52 0.17 155;
+
+    /* Custom pharmacy tokens */
+    --pharma-green: 0.52 0.17 155;
+    --pharma-green-light: 0.88 0.08 155;
+    --pharma-green-dark: 0.38 0.14 155;
+    --pharma-orange: 0.72 0.18 55;
+    --pharma-blue: 0.58 0.18 240;
+    --pharma-surface: 0.97 0.005 155;
+  }
+
+  .dark {
+    --background: 0.12 0.02 160;
+    --foreground: 0.95 0.01 155;
+    --card: 0.17 0.02 160;
+    --card-foreground: 0.95 0.01 155;
+    --popover: 0.17 0.02 160;
+    --popover-foreground: 0.95 0.01 155;
+    --primary: 0.6 0.17 155;
+    --primary-foreground: 0.1 0.02 160;
+    --secondary: 0.22 0.03 160;
+    --secondary-foreground: 0.9 0.01 155;
+    --muted: 0.22 0.03 160;
+    --muted-foreground: 0.65 0.03 155;
+    --accent: 0.25 0.04 160;
+    --accent-foreground: 0.9 0.01 155;
+    --destructive: 0.65 0.22 27;
+    --destructive-foreground: 0.95 0.01 155;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.6 0.17 155;
+    --sidebar: 0.17 0.02 160;
+    --sidebar-foreground: 0.95 0.01 155;
+    --sidebar-primary: 0.6 0.17 155;
+    --sidebar-primary-foreground: 0.1 0.02 160;
+    --sidebar-accent: 0.25 0.04 160;
+    --sidebar-accent-foreground: 0.9 0.01 155;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.6 0.17 155;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .pharma-btn-primary {
+    @apply bg-primary text-primary-foreground rounded-full px-6 py-2.5 font-semibold text-sm transition-all hover:opacity-90 active:scale-95 shadow-sm;
+  }
+
+  .pharma-card {
+    @apply bg-card rounded-2xl shadow-card border border-border overflow-hidden;
+  }
+
+  .pharma-badge-discount {
+    @apply bg-pharma-orange text-white text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
